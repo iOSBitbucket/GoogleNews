@@ -1,12 +1,7 @@
-//
-//  AppDelegate.m
-//  GoogleNews
-//
-//  Created by TAE on 24/01/2017.
-//  Copyright © 2017 GN. All rights reserved.
-//
 
 #import "AppDelegate.h"
+#import "GNArticleListViewController.h"
+#import "GNObjectConfigurator.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +9,17 @@
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    GNArticleListViewController *articleListVC = [[GNObjectConfigurator sharedInstance] articleListViewController];
+    UINavigationController *articleListNavController = [[UINavigationController alloc] initWithRootViewController:articleListVC];
+    
+    self.window.rootViewController = articleListNavController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
